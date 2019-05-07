@@ -1,0 +1,18 @@
+.ListItem {
+  
+  & a {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    color:rgb(168, 167, 167);
+    text-decoration: none;
+    
+    &.active,
+    &:hover,
+    &:active {
+      color: #eee;
+      background-color: rgb(71, 77, 83);;
+    }
+  }
+}
+
