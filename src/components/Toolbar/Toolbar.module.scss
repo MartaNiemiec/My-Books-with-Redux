@@ -3,10 +3,9 @@
   color: #fefefe;
   display: flex;
   justify-content: space-between;  
-  box-shadow: inset 0px -8px 10px -4px #111;;
-  // position: fixed;
+  align-items: center;
+  box-shadow: inset 0px -8px 10px -4px #111;
   width: 100%;
-
 
   & > * {
     font-size: 2rem;
