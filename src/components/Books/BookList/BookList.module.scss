@@ -1,0 +1,11 @@
+.BookList {
+  background-color: #fafafa;
+  width: 100%;
+  height: calc(100% - 4.3rem);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
+}
+

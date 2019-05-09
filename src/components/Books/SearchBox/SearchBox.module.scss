@@ -1,0 +1,24 @@
+.SearchBox {
+  height: 4.3rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(235, 235, 235);
+  box-shadow: inset 0px -8px 10px -4px rgb(214, 214, 214);
+  
+  &__input {
+  outline: none;
+  padding: .7rem;
+  border: none;
+  border-radius: 1.3rem;
+  box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.1 );
+  transition: padding .4s ease;
+
+    &:focus {
+      box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.2 );
+      padding: .7rem 1.3rem; 
+    }
+}
+}
+

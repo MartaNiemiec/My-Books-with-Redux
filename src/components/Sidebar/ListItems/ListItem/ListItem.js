@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './ListItem.module.scss';
-import { OrangeFullStar } from '../../../UI/Icons/OrangeFullStar';
-import { GreenList } from '../../../UI/Icons/GreenList';
+import { OrangeFullStar } from '../../../UI/Icons/StarIcon';
+import { GreenList } from '../../../UI/Icons/ListIcon';
 import { YellowCheck } from '../../../UI/Icons/CheckIcon';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 const listItem = (props) => {
   let icon;

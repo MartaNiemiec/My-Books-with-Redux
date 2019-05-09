@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Auxiliary from '../Auxiliary/Auxiliary';  
 import Toolbar from "../../components/Toolbar/Toolbar";
 import Sidebar from '../../components/Sidebar/Sidebar';
+import Books from '../../components/Books/Books';
 
 class Layout extends Component {
 
@@ -12,14 +13,6 @@ class Layout extends Component {
 
   render() {
 
-  let books = {
-    height: '100vh',
-    width: 'calc(100% - 150px)',
-    backgroundColor: '#EEF0F2',
-    position: 'relative',
-    display: 'inline-block'
-  }
-
   const main = {
     display:'flex'
   }
@@ -29,8 +22,7 @@ class Layout extends Component {
         <Toolbar />
         <main style={ main }>
           <Sidebar />
-          {/* <Books /> */}
-          <div style={ books }></div>
+          <Books />
         </main>
         
       </Auxiliary>

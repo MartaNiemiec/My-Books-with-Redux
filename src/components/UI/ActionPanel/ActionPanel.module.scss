@@ -1,0 +1,22 @@
+.ActionPanel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding-top: 1rem;
+  overflow: hidden;
+  background-image: linear-gradient(
+    rgba(8, 8, 8, 0.534) 10%,
+    rgba(12, 12, 12, 0.418) 45%,
+    rgba(14, 14, 14, 0));
+  width: inherit;
+  height: 3rem;
+  
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  & > * :hover {
+    cursor: pointer;
+  }
+}

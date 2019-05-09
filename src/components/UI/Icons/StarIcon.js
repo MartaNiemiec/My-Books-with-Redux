@@ -8,7 +8,7 @@ export const OrangeFullStar = styled(Star)`
   `
 
 export const GreyStar = styled(Star)`
-  color: #aaa;
+  color: #ddd;
   width: 1.2rem;
   padding-right:.8rem;
   `

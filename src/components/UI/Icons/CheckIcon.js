@@ -8,7 +8,7 @@ export const YellowCheck = styled(Check)`
   `
 
 export const GreyCheck = styled(Check)`
-  color: #aaa;
+  color: #ddd;
   width: 1.2rem;
   padding-right:.8rem;
   `

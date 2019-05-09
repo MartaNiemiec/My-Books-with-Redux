@@ -8,7 +8,7 @@ export const GreenList = styled(List)`
   `
 
 export const GreyList = styled(List)`
-  color: #aaa;
+  color: #ddd;
   width: 1.2rem;
   padding-right:.8rem;
   `
