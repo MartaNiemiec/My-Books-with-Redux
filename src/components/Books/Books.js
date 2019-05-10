@@ -3,10 +3,10 @@ import classes from './Books.module.scss';
 import SearchBox from './SearchBox/SearchBox';
 import BookList from './BookList/Booklist';
 
-const books = (props) => {
+const books = ({changed}) => {
 return (
   <div className={classes.Books}>
-    <SearchBox />
+    <SearchBox searchChange={changed}/>
     <BookList />
   </div>
 

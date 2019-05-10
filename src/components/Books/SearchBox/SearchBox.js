@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './SearchBox.module.scss';
 
 
-const SearchBox = ({ searchfield, searchChange }) => (
+const SearchBox = ({  searchChange }) => (
   <div className={classes.SearchBox}>
     <input 
       className={classes.SearchBox__input}

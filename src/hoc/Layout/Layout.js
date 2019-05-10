@@ -11,6 +11,11 @@ class Layout extends Component {
     books: []
   }
 
+  searchChangeHandler = (event) => {
+    this.setState({searchfield: event.target.value}, () => console.log(this.state.searchfield));
+    ;
+  }
+
   render() {
 
   const main = {
@@ -22,7 +27,7 @@ class Layout extends Component {
         <Toolbar />
         <main style={ main }>
           <Sidebar />
-          <Books />
+          <Books changed={this.searchChangeHandler}/>
         </main>
         
       </Auxiliary>
