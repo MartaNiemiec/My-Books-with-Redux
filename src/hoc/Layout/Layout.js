@@ -24,21 +24,16 @@ class Layout extends Component {
     event.preventDefault();
     request
       .get("https://www.googleapis.com/books/v1/volumes")
-      .query({ q: this.state.searchfield })
+      .query({ q: this.state.searchfield,
+        maxResults: 40 })
       .then(data => {
         this.setState({booksData: data.body.items})
-        // console.log(data.body.items)
         console.log(this.state.booksData);
       })
   }
   
 
-  // const book = this.state.books[0];
-  //   console.log('book >>>', book);
-  // }
-
   render() {
-
   const main = {
     display:'flex'
   }
