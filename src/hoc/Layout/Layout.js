@@ -27,10 +27,6 @@ class Layout extends Component {
         this.setState({booksData: data.body.items})
         console.log(this.state.booksData);
       })
-      .end((err, res) => {
-        // Calling the end function will send the request
-        console.log('error');
-      });
   }
   
 
