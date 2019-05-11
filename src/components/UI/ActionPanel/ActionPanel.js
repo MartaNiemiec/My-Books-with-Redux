@@ -6,9 +6,9 @@ import { GreyCheck } from '../Icons/CheckIcon';
 
 const ActionPanel = () => (
   <div className={classes.ActionPanel}>
-    <GreyList />
-    <GreyCheck />
-    <GreyStar />
+    <div><GreyList /></div>
+    <div><GreyCheck /></div>
+    <div><GreyStar /></div>
   </div> 
 )
 

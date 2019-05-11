@@ -11,14 +11,31 @@
   outline: none;
   padding: .7rem;
   border: none;
-  border-radius: 1.3rem;
+  border-top-left-radius:  1.3rem;
+  border-bottom-left-radius:  1.3rem;
   box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.1 );
   transition: padding .4s ease;
+  }
+  &__input:focus,
+  &__input:focus + &__button {
+    box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.2 );
+  }
 
-    &:focus {
-      box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.2 );
-      padding: .7rem 1.3rem; 
+  &__button {
+    outline: none;
+    cursor: pointer;
+    padding: .7rem;
+    border: none;
+    border-top-right-radius:  1.3rem;
+    border-bottom-right-radius:  1.3rem;
+    background-color: rgb(96, 22, 175);
+    font-weight: bold;
+    color: #eee;
+    box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.1 );
+
+    &:hover {
+      opacity: .9;
     }
-}
+  }
 }
 

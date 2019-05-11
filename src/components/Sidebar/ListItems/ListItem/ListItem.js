@@ -22,7 +22,7 @@ return (
     <a 
       href={props.link}
       className={props.active ? classes.active : null}>
-        {icon}
+        <span className={classes.ListItem__icon}>{icon}</span>
         {props.children}
     </a>
   </li>
