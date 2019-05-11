@@ -13,14 +13,11 @@ class Layout extends Component {
   }
 
   searchChangeHandler = (event) => {
-    this.setState({searchfield: event.target.value}
-      , () => console.log(this.state.searchfield)
-      );
+    this.setState({searchfield: event.target.value});
     ;
   }
 
   searchBook = (event) => {
-    console.log('yeeeeeeeeeeee');
     event.preventDefault();
     request
       .get("https://www.googleapis.com/books/v1/volumes")
@@ -30,6 +27,10 @@ class Layout extends Component {
         this.setState({booksData: data.body.items})
         console.log(this.state.booksData);
       })
+      .end((err, res) => {
+        // Calling the end function will send the request
+        console.log('error');
+      });
   }
   
 
