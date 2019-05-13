@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/My-books/static/css/main.8e68eb49.chunk.css",
-    "main.js": "/My-books/static/js/main.51f9a65d.chunk.js",
-    "main.js.map": "/My-books/static/js/main.51f9a65d.chunk.js.map",
+    "main.css": "/My-books/static/css/main.fa3df853.chunk.css",
+    "main.js": "/My-books/static/js/main.399f1bc5.chunk.js",
+    "main.js.map": "/My-books/static/js/main.399f1bc5.chunk.js.map",
     "runtime~main.js": "/My-books/static/js/runtime~main.05b624a2.js",
     "runtime~main.js.map": "/My-books/static/js/runtime~main.05b624a2.js.map",
-    "static/js/2.0e07f62b.chunk.js": "/My-books/static/js/2.0e07f62b.chunk.js",
-    "static/js/2.0e07f62b.chunk.js.map": "/My-books/static/js/2.0e07f62b.chunk.js.map",
+    "static/js/2.2cc7c8bd.chunk.js": "/My-books/static/js/2.2cc7c8bd.chunk.js",
+    "static/js/2.2cc7c8bd.chunk.js.map": "/My-books/static/js/2.2cc7c8bd.chunk.js.map",
     "index.html": "/My-books/index.html",
-    "precache-manifest.cc865843c1b03840534f5e6b18eb9f9f.js": "/My-books/precache-manifest.cc865843c1b03840534f5e6b18eb9f9f.js",
+    "precache-manifest.86cb235741a7d08e7e8866d469c82b78.js": "/My-books/precache-manifest.86cb235741a7d08e7e8866d469c82b78.js",
     "service-worker.js": "/My-books/service-worker.js",
-    "static/css/main.8e68eb49.chunk.css.map": "/My-books/static/css/main.8e68eb49.chunk.css.map"
+    "static/css/main.fa3df853.chunk.css.map": "/My-books/static/css/main.fa3df853.chunk.css.map"
   }
 }
