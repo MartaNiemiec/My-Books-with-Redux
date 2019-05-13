@@ -5,3 +5,20 @@
   position: relative;
   display: inline-block;
 }
+
+.Spinner {
+  margin: 4rem 50%;
+  transform: translate(50%, 3rem);
+  animation: roll 1.8s infinite;
+  animation-timing-function: cubic-bezier(.62,.62,.71,.71);
+  color: rgba(75, 75, 230, 0.76);
+}
+
+@keyframes roll {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

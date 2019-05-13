@@ -9,7 +9,8 @@ class Layout extends Component {
 
   state = {
     searchfield: '',
-    booksData: []
+    booksData: [],
+    isLoading: true
   }
 
   searchChangeHandler = (event) => {
@@ -19,12 +20,15 @@ class Layout extends Component {
 
   searchBook = (event) => {
     event.preventDefault();
+    this.setState({isLoading: true})
     request
       .get("https://www.googleapis.com/books/v1/volumes")
       .query({ q: this.state.searchfield,
         maxResults: 40 })
       .then(data => {
-        this.setState({booksData: data.body.items})
+        this.setState({
+          booksData: data.body.items,
+          isLoading: false })
         console.log(this.state.booksData);
       })
   }
@@ -44,7 +48,8 @@ class Layout extends Component {
             changed={this.searchChangeHandler}
             searchfield={this.state.searchfield}
             searchBook={this.searchBook}
-            booksData={this.state.booksData}/>
+            booksData={this.state.booksData}
+            isLoading={this.state.isLoading}/>
         </main>
         
       </Auxiliary>

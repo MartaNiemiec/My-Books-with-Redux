@@ -1,9 +1,10 @@
     import React from 'react';
     import classes from './BookList.module.scss';
     import Book from './Book/Book';
-    import RedError from '../../UI/Icons/ErrorIcon.js'
+    import RedError from '../../UI/Icons/ErrorIcon.js';
+
     
-    const bookList = ({searchBook, booksData}) => {
+    const bookList = ({ booksData }) => {
       let searchedBooks;
 
       // check if a books data is found
@@ -25,7 +26,7 @@
         
       return (
         <div className={classes.BookList}>
-          {searchedBooks}
+        {searchedBooks}
         </div>
       )
     }
