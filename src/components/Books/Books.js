@@ -5,13 +5,16 @@ import BookList from './BookList/Booklist';
 import Spinner from '../UI/Icons/Spinner';
 
 
-const books = ({changed, searchBook, booksData, isLoading}) => {
+const books = (props) => {
+
+  const {changed, searchBook, booksData, isLoading, toggleReadBook, wasRead} = props;
+  
 return (
   <div className={classes.Books}>
     <SearchBox searchChange={changed} searchBooks={searchBook}/>
     { isLoading 
       ? <Spinner className={classes.Spinner}/> 
-      : <BookList booksData={booksData}/> 
+      : <BookList booksData={booksData} wasRead={wasRead} toggleReadBook={toggleReadBook}/> 
     }
   </div>
 

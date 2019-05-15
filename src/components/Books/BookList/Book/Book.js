@@ -2,7 +2,8 @@ import React from 'react';
 import classes from './Book.module.scss';
 import ActionPanel from '../../../UI/ActionPanel/ActionPanel'
 
-const book = ({book}) => {
+const book = (props) => {
+  const { book, wasRead, toggleReadBook, id } = props;
   let bookCover = book.imageLinks;
 
   if (bookCover === undefined) {
@@ -35,10 +36,10 @@ const book = ({book}) => {
       ? authors = book.authors.join(', ').slice(0,37) + "..."
       : authors = book.authors.join(', ');
   }
-  
+
  return (
   <div className={classes.Book}>
-    <ActionPanel />
+    <ActionPanel wasRead={wasRead} toggleReadBook={() => toggleReadBook(id, book)} />
     <div 
       className={classes.Book__img} 
       style={bookCover}></div>

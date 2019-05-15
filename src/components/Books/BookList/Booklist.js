@@ -4,16 +4,22 @@
     import RedError from '../../UI/Icons/ErrorIcon.js';
 
     
-    const bookList = ({ booksData }) => {
+    const bookList = (props) => {
+      const { booksData, wasRead, toggleReadBook } = props;
       let searchedBooks;
 
       // check if a books data is found
       if (booksData) {
         searchedBooks = booksData.map((book, index) => {
+          let read = wasRead(book.id)
+
           return (
             <Book 
               key = {index}
-              book = {book.volumeInfo}/>
+              book = {book.volumeInfo}
+              id = {book.id}
+              wasRead = {read}
+              toggleReadBook={toggleReadBook}/>
           )
           })
       } else {
