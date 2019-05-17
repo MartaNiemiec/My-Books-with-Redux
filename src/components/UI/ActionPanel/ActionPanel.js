@@ -1,21 +1,23 @@
 import React from 'react';
 import classes from './ActionPanel.module.scss';
-import { GreyStar } from '../Icons/StarIcon';
-import { GreyList } from '../Icons/ListIcon';
+import { GreyStar, OrangeFullStar } from '../Icons/StarIcon';
+import { GreyList, GreenList } from '../Icons/ListIcon';
 import { GreyCheck, YellowCheck } from '../Icons/CheckIcon';
 
 const ActionPanel = (props) => {
-  const { wasRead, toggleReadBook } = props;
-  let checkIcon;
+  const { isInReadBooks, isInWishlist, isInFavourites, toggleWishlistBook, toggleFavouritesBook, toggleReadBook } = props;
+  let checkIcon, listIcon, starIcon;
 
-  !wasRead ? checkIcon = <GreyCheck /> : checkIcon = <YellowCheck />
+  isInReadBooks ? checkIcon = <YellowCheck /> : checkIcon = <GreyCheck />
+  isInWishlist ? listIcon = <GreenList /> : listIcon = <GreyList />
+  isInFavourites ? starIcon = <OrangeFullStar /> : starIcon = <GreyStar />
 
 
 return (
   <div className={classes.ActionPanel}>
-    <div><GreyList /></div>
+    <div onClick={toggleWishlistBook}>{listIcon}</div>
     <div onClick={toggleReadBook}>{checkIcon}</div>
-    <div><GreyStar /></div>
+    <div onClick={toggleFavouritesBook}>{starIcon}</div>
   </div> 
 )
 }

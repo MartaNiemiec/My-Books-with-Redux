@@ -11,14 +11,19 @@
       // check if a books data is found
       if (booksData) {
         searchedBooks = booksData.map((book, index) => {
-          let wasRead = isInUserState(book.id, "readBooks");
+          const bookId = book.id;
+          let isInReadBooks = isInUserState(bookId, "readBooks");
+          let isInWishlist = isInUserState(bookId, "wishlist");
+          let isInFavourites = isInUserState(bookId, "favourites");
 
           return (
             <Book 
               key = {index}
               book = {book.volumeInfo}
-              id = {book.id}
-              wasRead = {wasRead}
+              id = {bookId}
+              isInReadBooks = {isInReadBooks}
+              isInWishlist = {isInWishlist}
+              isInFavourites = {isInFavourites}
               toggleBookHandler={toggleBookHandler}/>
           )
           })
