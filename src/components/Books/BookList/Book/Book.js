@@ -3,7 +3,7 @@ import classes from './Book.module.scss';
 import ActionPanel from '../../../UI/ActionPanel/ActionPanel'
 
 const book = (props) => {
-  const { book, wasRead, toggleReadBook, id } = props;
+  const { book, wasRead, toggleBookHandler, id } = props;
   let bookCover = book.imageLinks;
 
   if (bookCover === undefined) {
@@ -39,7 +39,9 @@ const book = (props) => {
 
  return (
   <div className={classes.Book}>
-    <ActionPanel wasRead={wasRead} toggleReadBook={() => toggleReadBook(id, book)} />
+    <ActionPanel 
+      wasRead={wasRead} 
+      toggleReadBook={() => toggleBookHandler(id, book, 'readBooks')} />
     <div 
       className={classes.Book__img} 
       style={bookCover}></div>

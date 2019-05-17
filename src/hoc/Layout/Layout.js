@@ -42,18 +42,21 @@ class Layout extends Component {
       })
   }
 
-  wasRead = (bookId) => this.state.user.readBooks.some(book => book.id === bookId);
+  // wasRead = (bookId) => this.state.user.readBooks.some(book => book.id === bookId);
+
+  isInUserState = (bookId, stateKey) => this.state.user[stateKey].some(book => book.id === bookId);
+
   
-  toggleReadBookHandler = (bookId, bookInfo) => {
+  toggleBookHandler = (bookId, bookInfo, stateKey) => {
   // 1. check if the book was added
-    let wasRead = this.wasRead(bookId)
+    let isInState = this.isInUserState(bookId, stateKey)
   // 2. if it wasn't - add the book
-    if (wasRead === false) {
+    if (isInState === false) {
       this.setState(state => {
             const book = {id: bookId, title: bookInfo.title, authors: bookInfo.authors }
-            const readBooks = [book].concat(state.user.readBooks);
+            const userStateKey = [book].concat(state.user[stateKey]);
             const user = {...this.state.user}
-            user.readBooks = readBooks;
+            user[stateKey] = userStateKey;
             return {
               user
             }
@@ -61,9 +64,9 @@ class Layout extends Component {
   // 3. if it was then remove the book
     } else {
       this.setState(state => {
-        const readBooks = state.user.readBooks.filter(book => book.id !== bookId)
+        const userStateKey = state.user[stateKey].filter(book => book.id !== bookId)
         const user = {...this.state.user};
-        user.readBooks = readBooks;
+        user[stateKey] = userStateKey;
         return {
           user
         }
@@ -87,8 +90,8 @@ class Layout extends Component {
             searchBook={this.searchBook}
             booksData={this.state.booksData}
             isLoading={this.state.isLoading}
-            wasRead={this.wasRead}
-            toggleReadBook={this.toggleReadBookHandler}/>
+            isInUserState={this.isInUserState}
+            toggleBookHandler={this.toggleBookHandler}/>
         </main>
         
       </Auxiliary>

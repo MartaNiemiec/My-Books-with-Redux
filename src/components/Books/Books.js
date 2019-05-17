@@ -7,14 +7,14 @@ import Spinner from '../UI/Icons/Spinner';
 
 const books = (props) => {
 
-  const {changed, searchBook, booksData, isLoading, toggleReadBook, wasRead} = props;
+  const {changed, searchBook, booksData, isLoading, toggleBookHandler, isInUserState} = props;
   
 return (
   <div className={classes.Books}>
     <SearchBox searchChange={changed} searchBooks={searchBook}/>
     { isLoading 
       ? <Spinner className={classes.Spinner}/> 
-      : <BookList booksData={booksData} wasRead={wasRead} toggleReadBook={toggleReadBook}/> 
+      : <BookList booksData={booksData} isInUserState={isInUserState} toggleBookHandler={toggleBookHandler}/> 
     }
   </div>
 

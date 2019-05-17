@@ -5,21 +5,21 @@
 
     
     const bookList = (props) => {
-      const { booksData, wasRead, toggleReadBook } = props;
+      const { booksData, isInUserState, toggleBookHandler } = props;
       let searchedBooks;
 
       // check if a books data is found
       if (booksData) {
         searchedBooks = booksData.map((book, index) => {
-          let read = wasRead(book.id)
+          let wasRead = isInUserState(book.id, "readBooks");
 
           return (
             <Book 
               key = {index}
               book = {book.volumeInfo}
               id = {book.id}
-              wasRead = {read}
-              toggleReadBook={toggleReadBook}/>
+              wasRead = {wasRead}
+              toggleBookHandler={toggleBookHandler}/>
           )
           })
       } else {
