@@ -5,9 +5,15 @@ import ListItem from './ListItem/ListItem';
 
 const listItems = () => (
   <ul className={classes.ListItems}>
-    <ListItem link="#" icon="checkColor" active>Read</ListItem>
-    <ListItem link="#" icon="listColor">Wishlist</ListItem>
-    <ListItem link="#" icon="starColor">Favourites</ListItem>
+    <ListItem link="#" icon="checkColor" active>
+      <span className={classes.ListItems__text}>Read</span>
+    </ListItem>
+    <ListItem link="#" icon="listColor">
+      <span className={classes.ListItems__text}>Wishlist</span>
+    </ListItem>
+    <ListItem link="#" icon="starColor">
+      <span className={classes.ListItems__text}>Favourites</span>
+    </ListItem>
   </ul>
 )
   

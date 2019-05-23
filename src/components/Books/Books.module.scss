@@ -1,18 +1,27 @@
 .Books {
   height: calc(100vh - 65.38px);
-  width: calc(100% - 150px);
+  width: calc(100% - 137px);
   background-color: #EEF0F2;
   position: relative;
   display: inline-block;
+
+  @media (max-width: 600px) {
+    width: calc(100% - 50px);
+  }
 }
 
 .Spinner {
-  margin: 4rem 50%;
-  transform: translate(50%, 3rem);
-  animation: roll 1.8s infinite;
-  animation-timing-function: cubic-bezier(.62,.62,.71,.71);
-  color: rgba(75, 75, 230, 0.76);
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+
+  &__icon {
+    animation: roll 1.8s infinite;
+    animation-timing-function: cubic-bezier(.62,.62,.71,.71);
+    color: rgba(75, 75, 230, 0.76);
+  } 
 }
+
 
 @keyframes roll {
   0% {

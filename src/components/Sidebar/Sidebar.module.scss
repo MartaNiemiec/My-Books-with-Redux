@@ -1,5 +1,4 @@
-.Sidebar {
-  width: 150px; 
+.Sidebar { 
   padding-top: 1rem;
   background-color: #242A31;
   position: relative;
@@ -7,4 +6,8 @@
   border-top: 1px solid #444;
   border-right: 1px solid #444;
   box-shadow: inset -7px 0 9px -7px #111;
+
+  @media (max-width: 600px) {
+    width: 50px;
+  }
 }

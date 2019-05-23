@@ -31,7 +31,7 @@
         searchedBooks =
         <div className={classes.BookList__nomatches}>
           <RedError />
-          <h2 className={classes.BookList__nomatches__info}>Sorry, no books matched your search. Please try again.</h2>
+          <h3 className={classes.BookList__nomatches__info}>Sorry, no books matched your search. Please try again.</h3>
         </div> 
       }
         

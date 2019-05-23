@@ -6,16 +6,25 @@
   align-items: center;
   background-color: rgb(235, 235, 235);
   box-shadow: inset 0px -8px 10px -4px rgb(214, 214, 214);
+
+  @media (max-width: 600px) {
+    height: 3.8rem;
+  }
   
   &__input {
-  outline: none;
-  padding: .7rem;
-  border: none;
-  border-top-left-radius:  1.3rem;
-  border-bottom-left-radius:  1.3rem;
-  box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.1 );
-  transition: padding .4s ease;
+    outline: none;
+    padding: .7rem;
+    border: none;
+    border-top-left-radius:  1.3rem;
+    border-bottom-left-radius:  1.3rem;
+    box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.1 );
+    transition: padding .4s ease;
+
+    @media (max-width: 600px) {
+      padding: .5rem;
+    }
   }
+
   &__input:focus,
   &__input:focus + &__button {
     box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.2 );
@@ -35,6 +44,10 @@
 
     &:hover {
       opacity: .9;
+    }
+
+    @media (max-width: 600px) {
+      padding: .5rem;
     }
   }
 }

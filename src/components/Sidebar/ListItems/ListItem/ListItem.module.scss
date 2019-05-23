@@ -3,10 +3,13 @@
   & a {
     display: flex;
     align-items: center;
-    width: 100%;
     padding: 1rem;
     color:rgb(168, 167, 167);
     text-decoration: none;
+
+    @media (max-width: 600px) {
+      padding: .8rem;
+    }
     
     &.active,
     &:hover,
@@ -14,10 +17,6 @@
       color: #eee;
       background-color: rgb(71, 77, 83);;
     }
-  }
-
-  &__icon {
-    padding-right: .8rem;
   }
 }
 

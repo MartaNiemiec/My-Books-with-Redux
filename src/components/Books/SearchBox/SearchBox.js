@@ -3,7 +3,6 @@ import classes from './SearchBox.module.scss';
 
 
 const searchBox = ({  searchChange, searchBooks }) => (
-  
     <form onSubmit={searchBooks} className={classes.SearchBox} action="">
       <input 
         className={classes.SearchBox__input}
@@ -14,8 +13,6 @@ const searchBox = ({  searchChange, searchBooks }) => (
         type="submit"
         className={classes.SearchBox__button}>Search</button>
     </form>
-    
-  
 )
 
 export default searchBox;

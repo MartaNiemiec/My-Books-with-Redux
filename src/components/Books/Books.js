@@ -13,7 +13,9 @@ return (
   <div className={classes.Books}>
     <SearchBox searchChange={changed} searchBooks={searchBook}/>
     { isLoading 
-      ? <Spinner className={classes.Spinner}/> 
+      ? <div className={classes.Spinner}>
+          <Spinner className={classes.Spinner__icon}/> 
+        </div>
       : <BookList booksData={booksData} isInUserState={isInUserState} toggleBookHandler={toggleBookHandler}/> 
     }
   </div>
