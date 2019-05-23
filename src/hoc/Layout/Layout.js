@@ -5,28 +5,52 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Books from '../../components/Books/Books';
 import request from 'superagent';
 
+const initialState = {
+  searchfield: '',
+  booksData: [],
+  isLoading: true,
+  // route: 'signin',
+  user: {
+    name:'',
+    email: '',
+    password: '',
+    joined: '',
+    readBooks: [],
+    wishlist: [],
+    favourites: []
+  }
+}
+
 class Layout extends Component {
 
-  state = {
-    searchfield: '',
-    booksData: [],
-    isLoading: true,
-    user: {
-      name:'',
-      email: '',
-      password: '',
-      joined: '',
-      readBooks: [],
-      wishlist: [],
-      favourites: []
-    }
-  }
+  // =========== STATE ===========
+  state = initialState;
 
+
+  // // =========== Route Change ===========
+  // onRouteChange = (route) => {
+  //   if (route === 'signin') {
+  //     this.setState(initialState)
+  //   } else if (route === 'read') {
+  //     this.setState({route: 'read'})
+  //   } else if (route === 'wishlist') {
+  //     this.setState({route: 'wishlist'})
+  //   }
+
+
+
+  //   this.setState({route: route})
+  // }
+
+
+  // =========== Search Change Handler ===========
   searchChangeHandler = (event) => {
     this.setState({searchfield: event.target.value});
     ;
   }
 
+
+  // =========== Search Book ===========
   searchBook = (event) => {
     event.preventDefault();
     this.setState({isLoading: true})
@@ -42,15 +66,18 @@ class Layout extends Component {
       })
   }
 
-  // wasRead = (bookId) => this.state.user.readBooks.some(book => book.id === bookId);
 
+
+  // =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
   isInUserState = (bookId, stateKey) => this.state.user[stateKey].some(book => book.id === bookId);
 
   
+
+  // =========== Toggle Book's icons and user's state ===========
   toggleBookHandler = (bookId, bookInfo, stateKey) => {
-  // 1. check if the book was added
+  // 1. check if the book is in the user's state
     let isInState = this.isInUserState(bookId, stateKey)
-  // 2. if it wasn't - add the book
+  // 2. if it isn't - add the book
     if (isInState === false) {
       this.setState(state => {
             const book = {id: bookId, title: bookInfo.title, authors: bookInfo.authors }
@@ -61,7 +88,7 @@ class Layout extends Component {
               user
             }
           })
-  // 3. if it was then remove the book
+  // 3. if it is then remove the book
     } else {
       this.setState(state => {
         const userStateKey = state.user[stateKey].filter(book => book.id !== bookId)
@@ -74,6 +101,8 @@ class Layout extends Component {
     }
   }
 
+
+  // =========== RENDER ===========
   render() {
   const main = {
     display:'flex'

@@ -18,6 +18,8 @@
     background-size: cover; 
     object-fit: fill;
     background-position: 50% 50%;
+    border-top-left-radius: .4rem;
+    border-top-right-radius: .4rem; 
   }
 
   &__info {
