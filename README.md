@@ -1,21 +1,28 @@
+
+
+
 #  My books app
 My own React app using Google Books API, made from scratch.
 
 ## :clipboard: Table of contents 
-* [General info](#information_source--general-info)
-* [Screenshots](#screenshots--camera)
-* [Technologies](#technologies--computer)
-* [Features](#features--bulb)
-* [Status](#status--question)
+:small_orange_diamond: [**General info**](#information_source-general-info)
+
+:small_orange_diamond: [**Screenshots**](#camera-screenshots)
+
+:small_orange_diamond: [**Technologies**](#computer-technologies)
+
+:small_orange_diamond: [**Features**](#bulb-features)
+
+:small_orange_diamond: [**Status**](#question-status)
 
 ##  :information_source: General info 
 My books app allows to search for books and add them to the read books list, wishlist and favourites.
 
-## :camera:  Screenshots  
+## :camera: Screenshots  
 ![My books](my_books.png)
 ![My books - mobile version](my_books-mobile.png)
 
-## :computer:  Technologies  
+## :computer: Technologies  
 * HTML5 
 * SCSS 
 * JavaScript ES6 
@@ -30,12 +37,16 @@ $ npm start
 ```
 
 ## :bulb: Features  
+
 :heavy_check_mark: Searching books in the Google Books API and displaying them
- :heavy_check_mark: Adding selected books to the read books list, wishlist or favourites
+
+:heavy_check_mark: Adding selected books to the read books list, wishlist or favourites
 
 To-do list:
+
 :heavy_minus_sign: Displaying read books, wishlist or favourites after clicking on the icon in the sidebar
+
 :heavy_minus_sign: Registering and signing in
 
 ## :question: Status  
-Project is in progress.
+Project is in progress. :construction:
