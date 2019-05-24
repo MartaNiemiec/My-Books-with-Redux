@@ -5,7 +5,7 @@
 My own React app using Google Books API, made from scratch.
 
 ## :clipboard: Table of contents 
-:small_orange_diamond: [**General info**](#information_source-general-info)
+  :small_orange_diamond: [**General info**](#information_source-general-info)
 
 :small_orange_diamond: [**Screenshots**](#camera-screenshots)
 
@@ -42,7 +42,7 @@ $ npm start
 
 :heavy_check_mark: Adding selected books to the read books list, wishlist or favourites
 
-To-do list:
+#### To-do list:
 
 :heavy_minus_sign: Displaying read books, wishlist or favourites after clicking on the icon in the sidebar
 
