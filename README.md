@@ -15,6 +15,8 @@ My own React app using Google Books API, made from scratch.
 
 :small_orange_diamond: [**Status**](#question-status)
 
+:small_orange_diamond: [**Acknowledgements**](#arrow_down-acknowledgements)
+
 ##  :information_source: General info 
 My books app allows to search for books and add them to the read books list, wishlist and favourites.
 
@@ -42,7 +44,7 @@ $ npm start
 
 :heavy_check_mark: Adding selected books to the read books list, wishlist or favourites
 
-#### To-do list:
+ #### :soon: To-do list:
 
 :heavy_minus_sign: Displaying read books, wishlist or favourites after clicking on the icon in the sidebar
 
@@ -50,3 +52,9 @@ $ npm start
 
 ## :question: Status  
 Project is in progress. :construction:
+
+## :arrow_down: Acknowledgements
+* [Google Books API](https://developers.google.com/books/) 
+* [Styled Icons 7.12.0](https://styled-icons.js.org/)
+* [Styled Components 4.2.0](https://www.styled-components.com/)
+* [Superagent 5.0.5](https://www.npmjs.com/package/superagent) 
