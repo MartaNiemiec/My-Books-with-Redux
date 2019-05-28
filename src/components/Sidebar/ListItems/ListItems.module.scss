@@ -6,10 +6,21 @@
 
   &__text {
     padding-left: .8rem;
-    
     @media (max-width: 600px) {
       display: none;
       visibility: hidden;
     }
   }
+
+  & a {
+    text-decoration: none;
+  }
 }
+
+.active {
+
+  background-color: rgb(71, 77, 83);
+  text-decoration: underline;
+}
+ 
+    

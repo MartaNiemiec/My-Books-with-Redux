@@ -1,6 +1,5 @@
 .ListItem {
   
-  & a {
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -10,14 +9,13 @@
     @media (max-width: 600px) {
       padding: .8rem;
     }
-    
-    &.active,
-    &:hover,
-    &:active {
+
+    &:hover {
       color: #eee;
-      background-color: rgb(71, 77, 83);;
+      background-color: rgb(71, 77, 83);
     }
-  }
+    
+  
 }
 
 

@@ -3,7 +3,6 @@ import classes from './ListItem.module.scss';
 import { OrangeFullStar } from '../../../UI/Icons/StarIcon';
 import { GreenList } from '../../../UI/Icons/ListIcon';
 import { YellowCheck } from '../../../UI/Icons/CheckIcon';
-// import styled from 'styled-components';
 
 const listItem = (props) => {
   let icon;
@@ -19,12 +18,8 @@ const listItem = (props) => {
 
 return (
   <li className={classes.ListItem}>
-    <a 
-      href={props.link}
-      className={props.active ? classes.active : null}>
-        <span className={classes.ListItem__icon}>{icon}</span>
-        {props.children}
-    </a>
+    <span className={classes.ListItem__icon}>{icon}</span>
+    {props.children}
   </li>
 )
 }
