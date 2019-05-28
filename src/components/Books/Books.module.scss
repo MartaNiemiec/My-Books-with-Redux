@@ -9,25 +9,3 @@
     width: calc(100% - 50px);
   }
 }
-
-.Spinner {
-  display: flex;
-  justify-content: center;
-  padding-top: 4rem;
-
-  &__icon {
-    animation: roll 1.8s infinite;
-    animation-timing-function: cubic-bezier(.62,.62,.71,.71);
-    color: rgba(75, 75, 230, 0.76);
-  } 
-}
-
-
-@keyframes roll {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}

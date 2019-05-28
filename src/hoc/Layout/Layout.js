@@ -27,22 +27,6 @@ class Layout extends Component {
   state = initialState;
 
 
-  // // =========== Route Change ===========
-  // onRouteChange = (route) => {
-  //   if (route === 'signin') {
-  //     this.setState(initialState)
-  //   } else if (route === 'read') {
-  //     this.setState({route: 'read'})
-  //   } else if (route === 'wishlist') {
-  //     this.setState({route: 'wishlist'})
-  //   }
-
-
-
-  //   this.setState({route: route})
-  // }
-
-
   // =========== Search Change Handler ===========
   searchChangeHandler = (event) => {
     this.setState({searchfield: event.target.value});
@@ -122,9 +106,8 @@ class Layout extends Component {
             isInUserState={this.isInUserState}
             toggleBookHandler={this.toggleBookHandler}/>
         </main>
-        
       </Auxiliary>
-  );
+    );
   }
   
 
