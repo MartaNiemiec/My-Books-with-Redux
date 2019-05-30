@@ -34,10 +34,10 @@ const books = (props) => {
   return (
     <div className={classes.Books} >   
       <Switch>
-        <Route path="/read" render={() => readBooks}/>
-        <Route path="/wishlist" render={() => wishlist}/>
-        <Route path="/favourites" render={() => favourites}/>
-        <Route path='/' exact render={() => searchBooks} />
+        <Route path={process.env.PUBLIC_URL + "/read"} render={() => readBooks}/>
+        <Route path={process.env.PUBLIC_URL + "/wishlist"} render={() => wishlist}/>
+        <Route path={process.env.PUBLIC_URL + "/favourites"} render={() => favourites}/>
+        <Route path={process.env.PUBLIC_URL + "/"} exact render={() => searchBooks} />
         <Route render={() => <h1>Error 404</h1>} />
       </Switch>
     </div>

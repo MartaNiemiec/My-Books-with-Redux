@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 
 
 const listItems = () => {
-
   const read = <ListItem icon="checkColor">
                   <span className={classes.ListItems__text}>
                     Read
@@ -27,13 +26,19 @@ const listItems = () => {
 
   return (
     <ul className={classes.ListItems}>
-      <NavLink to="/read" activeClassName={classes.active}>
+      <NavLink 
+        to={process.env.PUBLIC_URL + "/read"} 
+        activeClassName={classes.active}>
         {read}
       </NavLink>
-      <NavLink to="/wishlist" activeClassName={classes.active}>
+      <NavLink 
+        to={process.env.PUBLIC_URL + "/wishlist"} 
+        activeClassName={classes.active}>
         {wishlist}
       </NavLink>
-      <NavLink to="/favourites" activeClassName={classes.active}>
+      <NavLink 
+        to={process.env.PUBLIC_URL + "/favourites"} 
+        activeClassName={classes.active}>
         {favourites}
       </NavLink>
     </ul>
