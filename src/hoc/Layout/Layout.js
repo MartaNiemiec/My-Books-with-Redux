@@ -51,33 +51,37 @@ class Layout extends Component {
   }
 
 
-
   // =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
-  isInUserState = (bookId, stateKey) => this.state.user[stateKey].some(book => book.id === bookId);
-
+  isInUserState = (bookId, bookList) => this.state.user[bookList].some(book => book.id === bookId);
   
 
   // =========== Toggle Book's icons and user's state ===========
-  toggleBookHandler = (bookId, bookInfo, stateKey) => {
+  toggleBookHandler = (bookId, bookList) => { // bookLists-> readBooks/wishlist/favourites
+    // create a copy of the user state as user
+    const user = {...this.state.user};
   // 1. check if the book is in the user's state
-    let isInState = this.isInUserState(bookId, stateKey)
+    let isInState = this.isInUserState(bookId, bookList);
   // 2. if it isn't - add the book
     if (isInState === false) {
       this.setState(state => {
-            const book = {id: bookId, title: bookInfo.title, authors: bookInfo.authors }
-            const userStateKey = [book].concat(state.user[stateKey]);
-            const user = {...this.state.user}
-            user[stateKey] = userStateKey;
-            return {
-              user
-            }
-          })
+        // book info
+          const book = state.booksData.filter(book => book.id === bookId)[0];
+        // adding a book to the userBookList array (eg. state.user.wishlist)
+          const userBookList = [book].concat(state.user[bookList]);
+        // setting the updated userBookList array to the user[bookList] 
+          user[bookList] = userBookList;
+          return {
+            user
+          }
+        })
   // 3. if it is then remove the book
     } else {
       this.setState(state => {
-        const userStateKey = state.user[stateKey].filter(book => book.id !== bookId)
-        const user = {...this.state.user};
-        user[stateKey] = userStateKey;
+      // create an array without selected book
+        const userBookList = state.user[bookList].filter(book =>
+          book.id !== bookId)
+      // setting the updated userBookList array to the user[bookList] 
+        user[bookList] = userBookList;
         return {
           user
         }
@@ -88,15 +92,15 @@ class Layout extends Component {
 
   // =========== RENDER ===========
   render() {
-  const main = {
-    display:'flex'
-  }
+    const main = {
+      display:'flex'
+    }
 
     return (
       <Auxiliary>
         <Toolbar />
         <main style={ main }>
-          <Sidebar />
+          <Sidebar/>
           <Books 
             changed={this.searchChangeHandler}
             searchfield={this.state.searchfield}
@@ -104,14 +108,14 @@ class Layout extends Component {
             booksData={this.state.booksData}
             isLoading={this.state.isLoading}
             isInUserState={this.isInUserState}
-            toggleBookHandler={this.toggleBookHandler}/>
+            toggleBookHandler={this.toggleBookHandler}
+            userReadBooks={this.state.user.readBooks}
+            userWishlist={this.state.user.wishlist}
+            userFavourites={this.state.user.favourites}/>
         </main>
       </Auxiliary>
     );
   }
-  
-
-  
 }
 
 export default Layout;

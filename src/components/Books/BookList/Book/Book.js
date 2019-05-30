@@ -3,8 +3,10 @@ import classes from './Book.module.scss';
 import ActionPanel from '../../../UI/ActionPanel/ActionPanel'
 
 const book = (props) => {
-  const { book, isInReadBooks, toggleBookHandler, id, isInWishlist, isInFavourites } = props;
-  let bookCover = book.imageLinks;
+  const { book, isInReadBooks, toggleBookHandler, bookId, isInWishlist, isInFavourites } = props;
+  let bookCover = book.volumeInfo.imageLinks;
+
+  
 
   if (bookCover === undefined) {
     bookCover = {backgroundColor: '#333'}
@@ -18,23 +20,23 @@ const book = (props) => {
   } 
 
   // Displaying book title
-  let bookTitle = book.title;
+  let bookTitle = book.volumeInfo.title;
   // check if the title isn't too long 
   bookTitle.length > 32 
-    ? bookTitle = book.title.slice(0,32) + "..." 
-    : bookTitle = book.title;
+    ? bookTitle = book.volumeInfo.title.slice(0,32) + "..." 
+    : bookTitle = book.volumeInfo.title;
 
 // Displaying authors
   let authors;
   // check if the authors are known or if the authors length isn't too long 
-  if (!book.authors) {
+  if (!book.volumeInfo.authors) {
     authors = null;
-  } else if (book.authors.length === 1) {
-    authors = book.authors
-  } else if (book.authors.length > 1) {
-    book.authors.join(', ').length > 37 
-      ? authors = book.authors.join(', ').slice(0,37) + "..."
-      : authors = book.authors.join(', ');
+  } else if (book.volumeInfo.authors.length === 1) {
+    authors = book.volumeInfo.authors
+  } else if (book.volumeInfo.authors.length > 1) {
+    book.volumeInfo.authors.join(', ').length > 37 
+      ? authors = book.volumeInfo.authors.join(', ').slice(0,37) + "..."
+      : authors = book.volumeInfo.authors.join(', ');
   }
 
  return (
@@ -43,9 +45,9 @@ const book = (props) => {
       isInReadBooks={isInReadBooks} 
       isInWishlist={isInWishlist} 
       isInFavourites={isInFavourites} 
-      toggleReadBook={() => toggleBookHandler(id, book, 'readBooks')} 
-      toggleWishlistBook={() => toggleBookHandler(id, book, 'wishlist')} 
-      toggleFavouritesBook={() => toggleBookHandler(id, book, 'favourites')} 
+      toggleReadBook={() => toggleBookHandler(bookId, 'readBooks')} 
+      toggleWishlistBook={() => toggleBookHandler(bookId, 'wishlist')} 
+      toggleFavouritesBook={() => toggleBookHandler(bookId, 'favourites')} 
       />
     <div 
       className={classes.Book__img} 

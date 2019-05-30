@@ -19,10 +19,13 @@ return (
       ? <div className={classes.Spinner}>
           <Spinner className={classes.Spinner__icon}/> 
         </div>
-      : <BookList 
+      : <div
+          className={classes.BookList}>
+          <BookList 
           booksData={booksData} 
           isInUserState={isInUserState} 
           toggleBookHandler={toggleBookHandler}/> 
+        </div>
     }
   </Auxiliary>
 

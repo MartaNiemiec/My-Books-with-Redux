@@ -20,8 +20,8 @@
         return (
           <Book 
             key = {index}
-            book = {book.volumeInfo}
-            id = {bookId}
+            book = {book}
+            bookId = {bookId}
             isInReadBooks = {isInReadBooks}
             isInWishlist = {isInWishlist}
             isInFavourites = {isInFavourites}

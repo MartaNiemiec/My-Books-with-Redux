@@ -1,7 +1,10 @@
 import React from 'react';
+import Booklist from '../BookList/Booklist';
 
-const favourites = () => (
-  <h1>Favourites section</h1>
+const favourites = (props) => (
+  <Booklist booksData={props.userFavourites} 
+            isInUserState={props.isInUserState} 
+            toggleBookHandler={props.toggleBookHandler} />
 )
 
 export default favourites;
