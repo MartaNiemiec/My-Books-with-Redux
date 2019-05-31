@@ -3,6 +3,7 @@ import classes from './ListItems.module.scss';
 import ListItem from './ListItem/ListItem';
 
 import { NavLink } from 'react-router-dom';
+import SearchIcon from '../../UI/Icons/SearchIcon'
 
 
 const listItems = () => {
@@ -24,8 +25,20 @@ const listItems = () => {
                         </span>
                       </ListItem>
 
+  const search = <ListItem icon="search">
+                    <span className={classes.ListItems__text}>
+                    Search
+                    </span>
+                  </ListItem>
+
   return (
     <ul className={classes.ListItems}>
+      <NavLink 
+        to={process.env.PUBLIC_URL + "/"}
+        exact 
+        activeClassName={classes.active}>
+        {search}
+      </NavLink>
       <NavLink 
         to={process.env.PUBLIC_URL + "/read"} 
         activeClassName={classes.active}>

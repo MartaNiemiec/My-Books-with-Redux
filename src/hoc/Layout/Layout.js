@@ -8,8 +8,8 @@ import request from 'superagent';
 const initialState = {
   searchfield: '',
   booksData: [],
-  isLoading: true,
-  // route: 'signin',
+  isLoading: false,
+  initialPage: true,
   user: {
     name:'',
     email: '',
@@ -37,7 +37,8 @@ class Layout extends Component {
   // =========== Search Book ===========
   searchBook = (event) => {
     event.preventDefault();
-    this.setState({isLoading: true})
+    this.setState({isLoading: true,
+      initialPage: false})
     request
       .get("https://www.googleapis.com/books/v1/volumes")
       .query({ q: this.state.searchfield,
@@ -45,7 +46,7 @@ class Layout extends Component {
       .then(data => {        
         this.setState({
           booksData: data.body.items,
-          isLoading: false })
+          isLoading: false})
         console.log(this.state.booksData);
       })
   }
@@ -107,6 +108,7 @@ class Layout extends Component {
             searchBook={this.searchBook}
             booksData={this.state.booksData}
             isLoading={this.state.isLoading}
+            isInitial={this.state.initialPage}
             isInUserState={this.isInUserState}
             toggleBookHandler={this.toggleBookHandler}
             userReadBooks={this.state.user.readBooks}

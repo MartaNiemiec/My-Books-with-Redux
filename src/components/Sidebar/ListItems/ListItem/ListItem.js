@@ -3,6 +3,7 @@ import classes from './ListItem.module.scss';
 import { OrangeFullStar } from '../../../UI/Icons/StarIcon';
 import { GreenList } from '../../../UI/Icons/ListIcon';
 import { YellowCheck } from '../../../UI/Icons/CheckIcon';
+import { SearchIcon } from '../../../UI/Icons/SearchIcon';
 
 const listItem = (props) => {
   let icon;
@@ -13,6 +14,8 @@ const listItem = (props) => {
     icon = <GreenList />;
   } else if (props.icon === "starColor") {
     icon = <OrangeFullStar />;
+  } else if (props.icon === "search") {
+    icon = <SearchIcon />;
   }
   
 

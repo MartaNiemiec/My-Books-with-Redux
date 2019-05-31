@@ -8,14 +8,15 @@ import { Route, Switch } from 'react-router-dom';
 
 
 const books = (props) => {
-  const {changed, searchBook, booksData, isLoading, toggleBookHandler, isInUserState, userReadBooks, userWishlist, userFavourites} = props;
+  const {changed, searchBook, booksData, isLoading, toggleBookHandler, isInUserState, userReadBooks, userWishlist, userFavourites, isInitial} = props;
   const searchBooks = <SearchBooks 
                         isLoading={isLoading} 
                         changed={changed} 
                         searchBooks={searchBook} 
                         booksData={booksData} 
                         isInUserState={isInUserState} 
-                        toggleBookHandler={toggleBookHandler}/>
+                        toggleBookHandler={toggleBookHandler}
+                        isInitial={isInitial}/>
 
   const readBooks = <Read 
                       userReadBooks={userReadBooks} 

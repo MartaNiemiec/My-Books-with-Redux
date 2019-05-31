@@ -2,12 +2,18 @@
     import classes from './BookList.module.scss';
     import Book from './Book/Book';
     import RedError from '../../UI/Icons/ErrorIcon.js';
-    import Auxiliary from '../../../hoc/Auxiliary/Auxiliary'
+    import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
+    import { SearchIconBig } from '../../UI/Icons/SearchIcon';
 
     
     const bookList = (props) => {
-      const { booksData, isInUserState, toggleBookHandler } = props;
+      const { booksData, isInUserState, toggleBookHandler, isLoading, isInitial } = props;
       let searchedBooks, booksSection;
+console.log(isInitial);
+      // if (!isLoading) {
+      //   booksSection = <h1>search</h1> ;
+      // }
+
 
       // check if a books data is found
       if (booksData) {
@@ -34,6 +40,14 @@
                           <RedError />
                           <h3 className={classes.BookList__nomatches__info}>Sorry, no books matched your search. Please try again.</h3>
                         </div> 
+      }
+
+
+      if (isInitial) {
+        booksSection = <div className={classes.BookList__nomatches}>
+                        <SearchIconBig />
+                        <h3 className={classes.BookList__nomatches__info}>Search books</h3>
+                        </div>
       }
         
       return (
