@@ -20,7 +20,6 @@ const books = (props) => {
 
   const readBooks = <Read 
                       userReadBooks={userReadBooks} 
-                      booksData={booksData} 
                       isInUserState={isInUserState} 
                       toggleBookHandler={toggleBookHandler}/>
   const wishlist = <Wishlist 

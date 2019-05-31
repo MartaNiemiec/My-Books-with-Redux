@@ -7,13 +7,10 @@
 
     
     const bookList = (props) => {
-      const { booksData, isInUserState, toggleBookHandler, isLoading, isInitial } = props;
-      let searchedBooks, booksSection;
-console.log(isInitial);
-      // if (!isLoading) {
-      //   booksSection = <h1>search</h1> ;
-      // }
+      // console.log(props);
 
+      const { booksData, isInUserState, toggleBookHandler, isInitial } = props;
+      let searchedBooks, booksSection;
 
       // check if a books data is found
       if (booksData) {
@@ -33,7 +30,7 @@ console.log(isInitial);
             isInFavourites = {isInFavourites}
             toggleBookHandler={toggleBookHandler}/>
         )
-        })
+      })
         booksSection = <div className={classes.BookList}>{searchedBooks}</div>
       } else {
         booksSection =  <div className={classes.BookList__nomatches}>

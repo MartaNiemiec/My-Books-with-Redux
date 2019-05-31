@@ -3,7 +3,6 @@ import classes from './ListItems.module.scss';
 import ListItem from './ListItem/ListItem';
 
 import { NavLink } from 'react-router-dom';
-import SearchIcon from '../../UI/Icons/SearchIcon'
 
 
 const listItems = () => {
