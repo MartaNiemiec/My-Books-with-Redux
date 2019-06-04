@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Book.module.scss';
-import ActionPanel from '../../../UI/ActionPanel/ActionPanel'
+import ActionPanel from '../../../UI/ActionPanel/ActionPanel';
 
 const book = (props) => {
   const { book, isInReadBooks, toggleBookHandler, bookId, isInWishlist, isInFavourites } = props;

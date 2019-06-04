@@ -4,11 +4,12 @@
     import RedError from '../../UI/Icons/ErrorIcon.js';
     import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
     import { SearchIconBig } from '../../UI/Icons/SearchIcon';
+    import Flip from 'react-reveal/Flip';
+    import Fade from 'react-reveal/Fade';
+    import Slide from 'react-reveal/Slide';
 
     
     const bookList = (props) => {
-      // console.log(props);
-
       const { booksData, isInUserState, toggleBookHandler, isInitial } = props;
       let searchedBooks, booksSection;
 
@@ -19,9 +20,9 @@
           let isInReadBooks = isInUserState(bookId, "readBooks");
           let isInWishlist = isInUserState(bookId, "wishlist");
           let isInFavourites = isInUserState(bookId, "favourites");
-
+            
         return (
-          <Book 
+            <Book 
             key = {index}
             book = {book}
             bookId = {bookId}
@@ -29,9 +30,14 @@
             isInWishlist = {isInWishlist}
             isInFavourites = {isInFavourites}
             toggleBookHandler={toggleBookHandler}/>
+            
         )
       })
-        booksSection = <div className={classes.BookList}>{searchedBooks}</div>
+        booksSection = <div className={classes.BookList}>
+                         <Slide bottom>{searchedBooks}</Slide>
+                       </div>
+
+
       } else {
         booksSection =  <div className={classes.BookList__nomatches}>
                           <RedError />
@@ -39,11 +45,10 @@
                         </div> 
       }
 
-
       if (isInitial) {
         booksSection = <div className={classes.BookList__nomatches}>
-                        <SearchIconBig />
-                        <h3 className={classes.BookList__nomatches__info}>Search books</h3>
+                         <Fade><SearchIconBig /></Fade>
+                         <Flip left cascade><h3 className={classes.BookList__nomatches__info}>Search books</h3></Flip>
                         </div>
       }
         

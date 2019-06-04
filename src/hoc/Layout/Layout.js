@@ -37,20 +37,29 @@ class Layout extends Component {
   // =========== Search Book ===========
   searchBook = (event) => {
     event.preventDefault();
-    this.setState({isLoading: true,
-      initialPage: false})
-    request
-      .get("https://www.googleapis.com/books/v1/volumes")
-      .query({ q: this.state.searchfield,
-        maxResults: 40 })
-      .then(data => {        
-        this.setState({
-          booksData: data.body.items,
-          isLoading: false})
-        console.log(this.state.booksData);
-      })
-  }
 
+    if (this.state.searchfield === '') {
+      this.setState({
+        isLoading: false,
+        initialPage: true})
+    } else {
+      this.setState({
+        isLoading: true,
+        initialPage: false})
+      request
+        .get("https://www.googleapis.com/books/v1/volumes")
+        .query({ 
+          q: this.state.searchfield,
+          orderBy: "newest",
+          maxResults: 40 })
+        .then(data => {        
+          this.setState({
+            booksData: data.body.items,
+            isLoading: false})
+          console.log(this.state.booksData);
+        })
+    } 
+  }
 
   // =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
   isInUserState = (bookId, bookList) => this.state.user[bookList].some(book => book.id === bookId);
