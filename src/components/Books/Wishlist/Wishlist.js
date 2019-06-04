@@ -3,11 +3,11 @@ import Booklist from '../BookList/Booklist';
 
 const wishlist = (props) => {
   let wishlist;
-  const style = {fontStyle: "italic", fontWeight: "400", textAlign: "center",                         marginTop: "3rem", color:"#cc3300"};
-  const noBooks = <h1 style={style}>
+  const style = {fontStyle: "italic", fontWeight: "400", textAlign: "center", marginTop: "3rem", color:"#cc3300"};
+  const noBooks = <h2 style={style}>
                     Sorry, no books in the wishlist found.
-                  </h1>;
-  const bookList =  <Booklist booksData={props.userReadBooks} 
+                  </h2>;
+  const bookList =  <Booklist booksData={props.userWishlist} 
                       isInUserState={props.isInUserState} 
                       toggleBookHandler={props.toggleBookHandler} />;
 
