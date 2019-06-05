@@ -1,0 +1,49 @@
+.BookModal {
+  // display: inline-block;
+  height: 100%;
+  width: 100%;
+  padding: 1rem 0;
+  overflow-y: scroll;
+  
+  @media only screen and (max-width: 600px) {
+  display: flex;
+  flex-direction: column;
+  }
+
+  &__image {
+    position: relative;
+    float: left;
+    width: calc(35% - 1rem);
+    height: auto;
+    padding-left: 1rem;
+    padding-right: .5rem;
+
+    @media only screen and (max-width: 600px) {
+      align-self: center;
+      width: auto;
+      height: 13rem;
+    }
+
+  }
+  
+  &__content {
+    padding:  0 1rem;
+    position: relative;
+    float: right;
+    width: calc(65% - 2.5rem);
+
+    @media only screen and (max-width: 600px) {
+      padding: 1rem;
+      width: calc(100% - 2rem);
+      height: calc(100% - 15rem);
+    }
+  }
+
+  & h4 {
+    padding: .3rem 0;
+    font-style: italic;
+    color: rgb(90, 90, 90);
+    font-weight: 500;
+  }
+
+}

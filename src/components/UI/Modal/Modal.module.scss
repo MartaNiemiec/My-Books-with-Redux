@@ -1,0 +1,33 @@
+.Modal {
+  position: fixed;
+  z-index: 500;
+  background-color: #eee;
+  width: 60%;
+  height: 23rem;
+  box-shadow: 2px 2px 8px 0px rgba( 0, 0, 0, 0.5 );
+  padding: 1rem 0;
+  left: 20%;
+  top: 20%;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .6rem;
+  overflow:hidden;
+
+  @media only screen and (max-width: 1000px) {
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+  }
+}
+
