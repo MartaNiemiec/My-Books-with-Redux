@@ -50,7 +50,6 @@ class Layout extends Component {
         .get("https://www.googleapis.com/books/v1/volumes")
         .query({ 
           q: this.state.searchfield,
-          orderBy: "newest",
           maxResults: 40 })
         .then(data => {        
           this.setState({
