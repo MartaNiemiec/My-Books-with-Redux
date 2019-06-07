@@ -29,7 +29,7 @@ const purchaseButton = (props) => {
   }
 
   return (
-    <button className={classes[buttonClassName]}>
+    <button className={classes[buttonClassName] + " " + classes.Button}>
       <a target="_blank" 
         rel="noopener noreferrer"
         href={link} 
