@@ -1,0 +1,15 @@
+.Ribbon {
+  background-image: linear-gradient(#3ca9f1, #2875a8);
+  width: 8rem;
+  padding: .3rem 0;
+  text-align: center;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  left: -2rem;
+  transform: rotate(40deg) translate(6.8rem, 11.2rem);box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+
+  &__unavailable {
+    background-image: linear-gradient(#8f8f8f, #5c5c5c);
+  }
+}

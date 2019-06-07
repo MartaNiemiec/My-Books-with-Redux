@@ -3,6 +3,7 @@ import classes from './Book.module.scss';
 import ActionPanel from '../../../UI/ActionPanel/ActionPanel';
 import Auxiliary from '../../../../hoc/Auxiliary/Auxiliary';
 import BookModal from './BookModal/BookModal';
+import Ribbon from '../../../UI/Ribbon/Ribbon';
 
 class book extends Component {
 
@@ -23,6 +24,9 @@ class book extends Component {
   render() {
     let { book, isInReadBooks, toggleBookHandler, bookId, isInWishlist, isInFavourites } = this.props;
     let bookCover = book.volumeInfo.imageLinks;
+    const bookSaleability = book.saleInfo.saleability;
+    let ribbonClass = '';
+    let ribbonText;
 
     
   // Setting book cover
@@ -59,6 +63,16 @@ class book extends Component {
         : authors = book.volumeInfo.authors.join(', ');
     }
 
+  // Setting ribbon content and class
+    if (bookSaleability === "FOR_SALE") {
+      ribbonText = book.saleInfo.retailPrice.amount + " " + book.saleInfo.retailPrice.currencyCode;
+    } else if (bookSaleability === "FREE" ) {
+      ribbonText = "FREE";
+    } else if (bookSaleability === "NOT_FOR_SALE") {
+      ribbonText = "Unavailable";
+      ribbonClass = "Ribbon__unavailable";
+    }
+
   return (
     <Auxiliary>
       <BookModal show={this.state.showModal} 
@@ -76,7 +90,9 @@ class book extends Component {
           toggleFavouritesBook={() => toggleBookHandler(bookId, 'favourites')} 
           />
         <span onClick={this.openModalHandler}>
-          <div className={classes.Book__img}  style={bookCover}></div>
+          <div className={classes.Book__img}  style={bookCover}>
+            <Ribbon ribbonClass={ribbonClass} content={ribbonText} />
+          </div>
           <div className={classes.Book__info}>
             <h4 className={classes.Book__title}>{bookTitle}</h4>
             <p className={classes.Book__authors}>{authors}</p>
