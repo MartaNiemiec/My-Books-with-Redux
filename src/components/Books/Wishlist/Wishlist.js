@@ -10,7 +10,8 @@ const wishlist = (props) => {
                   </h2></Flip>;
   const bookList =  <Booklist booksData={props.userWishlist} 
                       isInUserState={props.isInUserState} 
-                      toggleBookHandler={props.toggleBookHandler} />;
+                      toggleBookHandler={props.toggleBookHandler}
+                      openModalHandler={props.openModalHandler} />;
 
   props.userWishlist.length === 0
   ? wishlist = noBooks

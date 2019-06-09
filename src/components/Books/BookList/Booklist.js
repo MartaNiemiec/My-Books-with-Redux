@@ -10,10 +10,11 @@
 
     
     const bookList = (props) => {
-      const { booksData, isInUserState, toggleBookHandler, isInitial } = props;
+      const { booksData, isInUserState, toggleBookHandler, isInitial, openModalHandler } = props;
       let searchedBooks, booksSection;
 
-      // check if a books data is found
+
+    // check if a books data is found
       if (booksData) {
         searchedBooks = booksData.map((book, index) => {
           const bookId = book.id;
@@ -21,34 +22,40 @@
           let isInWishlist = isInUserState(bookId, "wishlist");
           let isInFavourites = isInUserState(bookId, "favourites");
             
-        return (
-            <Book 
-            key = {index}
-            book = {book}
-            bookId = {bookId}
-            isInReadBooks = {isInReadBooks}
-            isInWishlist = {isInWishlist}
-            isInFavourites = {isInFavourites}
-            toggleBookHandler={toggleBookHandler}/>
-            
-        )
-      })
+          return (
+                <Slide bottom key={index}>
+                  <Book key={index}
+                      book={book}
+                      bookId={bookId}
+                      isInReadBooks={isInReadBooks}
+                      isInWishlist={isInWishlist}
+                      isInFavourites={isInFavourites}
+                      toggleBookHandler={toggleBookHandler}
+                      openModalHandler={openModalHandler}/>
+                </Slide>
+          )
+        })
+      // display searched books
         booksSection = <div className={classes.BookList}>
-                         <Slide bottom>{searchedBooks}</Slide>
+                          {/* <Slide bottom> */}  
+                            {searchedBooks}
+                            {/* </Slide> */}
                        </div>
-
-
       } else {
+      // display no matched books message
         booksSection =  <div className={classes.BookList__nomatches}>
-                          <RedError />
-                          <h3 className={classes.BookList__nomatches__info}>Sorry, no books matched your search. Please try again.</h3>
+                          <Fade><RedError /></Fade>
+                          <Flip left cascade><h3 className={classes.BookList__nomatches__info}>Sorry, no books matched your search. Please try again.</h3></Flip>
                         </div> 
       }
 
+    // check if it's initial page wich no searched books
       if (isInitial) {
         booksSection = <div className={classes.BookList__nomatches}>
                          <Fade><SearchIconBig /></Fade>
-                         <Flip left cascade><h3 className={classes.BookList__nomatches__info}>Search books</h3></Flip>
+                         <Flip left>
+                           <h3 className={classes.BookList__nomatches__info}>Search books</h3>
+                         </Flip>
                         </div>
       }
         

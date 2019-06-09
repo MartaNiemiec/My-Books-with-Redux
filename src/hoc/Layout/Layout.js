@@ -4,12 +4,18 @@ import Toolbar from "../../components/Toolbar/Toolbar";
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Books from '../../components/Books/Books';
 import request from 'superagent';
+// import Backdrop from '../../components/UI/Backdrop/Backdrop';
+import BookModal from '../../components/Books/BookList/Book/BookModal/BookModal';
 
+
+// =========== INITIAL STATE ===========
 const initialState = {
   searchfield: '',
   booksData: [],
   isLoading: false,
   initialPage: true,
+  openBookModal:true,
+  bookModalData: [],
   user: {
     name:'',
     email: '',
@@ -23,18 +29,32 @@ const initialState = {
 
 class Layout extends Component {
 
-  // =========== STATE ===========
+// =========== STATE ===========
   state = initialState;
 
 
-  // =========== Search Change Handler ===========
+// =========== Search Change Handler ===========
   searchChangeHandler = (event) => {
     this.setState({searchfield: event.target.value});
     ;
   }
 
 
-  // =========== Search Book ===========
+// =========== Open Modal Handler ===========
+  openModalHandler = (bookData, fullAuthors) => {
+    this.setState({ openBookModal: true, 
+                    bookModalData: [bookData, fullAuthors] });
+  }
+
+  
+// =========== Close Modal Handler ===========
+  closeModalHandler = () => {
+    this.setState({ openBookModal: false, 
+                    bookModalData: [] });
+  }
+
+
+// =========== Search Book ===========
   searchBook = (event) => {
     event.preventDefault();
 
@@ -60,11 +80,11 @@ class Layout extends Component {
     } 
   }
 
-  // =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
+// =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
   isInUserState = (bookId, bookList) => this.state.user[bookList].some(book => book.id === bookId);
   
 
-  // =========== Toggle Book's icons and user's state ===========
+// =========== Toggle Book's icons and user's state ===========
   toggleBookHandler = (bookId, bookList) => { // bookLists-> readBooks/wishlist/favourites
     // create a copy of the user state as user
     const user = {...this.state.user};
@@ -99,14 +119,23 @@ class Layout extends Component {
   }
 
 
-  // =========== RENDER ===========
+// =========== RENDER ===========
   render() {
     const main = {
       display:'flex'
     }
 
+    let modall = this.state.bookModalData.length === 0  
+    ? null 
+    : <BookModal show={this.state.openBookModal} 
+              modalClosed={this.closeModalHandler}
+              book={this.state.bookModalData[0]}
+              fullAuthors={this.state.bookModalData[1]}>
+              </BookModal>;
+
     return (
       <Auxiliary>
+        {modall}
         <Toolbar />
         <main style={ main }>
           <Sidebar/>
@@ -121,7 +150,8 @@ class Layout extends Component {
             toggleBookHandler={this.toggleBookHandler}
             userReadBooks={this.state.user.readBooks}
             userWishlist={this.state.user.wishlist}
-            userFavourites={this.state.user.favourites}/>
+            userFavourites={this.state.user.favourites}
+            openModalHandler={this.openModalHandler}/>
         </main>
       </Auxiliary>
     );
@@ -129,3 +159,11 @@ class Layout extends Component {
 }
 
 export default Layout;
+
+// fetch('https://www.googleapis.com/books/v1/volumes?q=flowers&filter=paid-ebooks')
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(function(myJson) {
+//     console.log(myJson);
+//   });

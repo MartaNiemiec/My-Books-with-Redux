@@ -1,28 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from './Book.module.scss';
 import ActionPanel from '../../../UI/ActionPanel/ActionPanel';
 import Auxiliary from '../../../../hoc/Auxiliary/Auxiliary';
-import BookModal from './BookModal/BookModal';
 import Ribbon from '../../../UI/Ribbon/Ribbon';
 
-class book extends Component {
+const book = (props)  => {
+ 
 
-  state = {
-    showModal: false,
-
-  }
-
-  closeModalHandler = () => {
-    this.setState({ showModal: false });
-  }
-
-  openModalHandler = () => {
-    this.setState({ showModal: true });
-  }
-
-
-  render() {
-    let { book, isInReadBooks, toggleBookHandler, bookId, isInWishlist, isInFavourites } = this.props;
+  
+    let { book, isInReadBooks, toggleBookHandler, bookId, isInWishlist, isInFavourites, openModalHandler } = props;
     let bookCover = book.volumeInfo.imageLinks;
     const bookSaleability = book.saleInfo.saleability;
     let ribbonClass = '';
@@ -73,34 +59,29 @@ class book extends Component {
       ribbonClass = "Ribbon__unavailable";
     }
 
-  return (
-    <Auxiliary>
-      <BookModal show={this.state.showModal} 
-             modalClosed={this.closeModalHandler}
-             book={book}
-             fullAuthors={fullAuthors}>
-      </BookModal>
-      <div className={classes.Book}>
-        <ActionPanel 
-          isInReadBooks={isInReadBooks} 
-          isInWishlist={isInWishlist} 
-          isInFavourites={isInFavourites} 
-          toggleReadBook={() => toggleBookHandler(bookId, 'readBooks')} 
-          toggleWishlistBook={() => toggleBookHandler(bookId, 'wishlist')} 
-          toggleFavouritesBook={() => toggleBookHandler(bookId, 'favourites')} 
-          />
-        <span onClick={this.openModalHandler}>
-          <div className={classes.Book__img}  style={bookCover}>
-            <Ribbon ribbonClass={ribbonClass} content={ribbonText} />
-          </div>
-          <div className={classes.Book__info}>
-            <h4 className={classes.Book__title}>{bookTitle}</h4>
-            <p className={classes.Book__authors}>{authors}</p>
-          </div>
-        </span>
-      </div>
-    </Auxiliary>
-  );
-}}
+    return (
+      <Auxiliary>
+        <div className={classes.Book}>
+          <ActionPanel 
+            isInReadBooks={isInReadBooks} 
+            isInWishlist={isInWishlist} 
+            isInFavourites={isInFavourites} 
+            toggleReadBook={() => toggleBookHandler(bookId, 'readBooks')} 
+            toggleWishlistBook={() => toggleBookHandler(bookId, 'wishlist')} 
+            toggleFavouritesBook={() => toggleBookHandler(bookId, 'favourites')} 
+            />
+          <span onClick={() => openModalHandler(book, fullAuthors)}>
+            <div className={classes.Book__img}  style={bookCover}>
+              <Ribbon ribbonClass={ribbonClass} content={ribbonText} />
+            </div>
+            <div className={classes.Book__info}>
+              <h4 className={classes.Book__title}>{bookTitle}</h4>
+              <p className={classes.Book__authors}>{authors}</p>
+            </div>
+          </span>
+        </div>
+      </Auxiliary>
+    );
+}
 
 export default book;

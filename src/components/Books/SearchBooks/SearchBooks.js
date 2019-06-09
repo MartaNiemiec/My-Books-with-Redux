@@ -8,7 +8,7 @@ import Auxiliary from '../../../hoc/Auxiliary/Auxiliary'
 
 const searchBooks = (props) => {
 
-  const {changed, searchBooks, booksData, isLoading, toggleBookHandler, isInUserState, isInitial} = props;
+  const {changed, searchBooks, booksData, isLoading, toggleBookHandler, isInUserState, isInitial, openModalHandler} = props;
   
   let booksSection;
 
@@ -22,16 +22,13 @@ const searchBooks = (props) => {
                           booksData={booksData} 
                           isInUserState={isInUserState} 
                           toggleBookHandler={toggleBookHandler}
-                          isInitial={isInitial}/> 
+                          isInitial={isInitial}
+                          openModalHandler={openModalHandler}/> 
                         </div>
   
   !isLoading 
   ? booksSection = searchedBooks
   : booksSection = spinner
-
-  // if (isInitial) {
-  //     booksSection = <h1>Search</h1>
-  // }
 
 return (
   <Auxiliary>

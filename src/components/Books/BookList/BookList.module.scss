@@ -6,6 +6,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
+  padding: 1rem .5rem;
   overflow-y: scroll;
 
   &__nomatches {
