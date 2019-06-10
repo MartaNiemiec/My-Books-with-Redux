@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setSearchField } from '../../actions';
+
 import Auxiliary from '../Auxiliary/Auxiliary';  
 import Toolbar from "../../components/Toolbar/Toolbar";
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -10,7 +13,7 @@ import BookModal from '../../components/Books/BookList/Book/BookModal/BookModal'
 
 // =========== INITIAL STATE ===========
 const initialState = {
-  searchfield: '',
+  // searchfield: '',
   booksData: [],
   isLoading: false,
   initialPage: true,
@@ -27,6 +30,19 @@ const initialState = {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchField
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchChangeHandler: (event) => dispatch(setSearchField(event.target.value))
+  }
+}
+
+
 class Layout extends Component {
 
 // =========== STATE ===========
@@ -34,10 +50,10 @@ class Layout extends Component {
 
 
 // =========== Search Change Handler ===========
-  searchChangeHandler = (event) => {
-    this.setState({searchfield: event.target.value});
-    ;
-  }
+  // searchChangeHandler = (event) => {
+  //   this.setState({searchfield: event.target.value});
+  //   ;
+  // }
 
 
 // =========== Open Modal Handler ===========
@@ -125,12 +141,15 @@ class Layout extends Component {
       display:'flex'
     }
 
-    let modall = this.state.bookModalData.length === 0  
+    const { bookModalData, openBookModal, booksData, isLoading, initialPage, user  } = this.state;
+    const { searchChangeHandler, searchField } = this.props;
+
+    let modall = bookModalData.length === 0  
     ? null 
-    : <BookModal show={this.state.openBookModal} 
+    : <BookModal show={openBookModal} 
               modalClosed={this.closeModalHandler}
-              book={this.state.bookModalData[0]}
-              fullAuthors={this.state.bookModalData[1]}>
+              book={bookModalData[0]}
+              fullAuthors={bookModalData[1]}>
               </BookModal>;
 
     return (
@@ -140,17 +159,17 @@ class Layout extends Component {
         <main style={ main }>
           <Sidebar/>
           <Books 
-            changed={this.searchChangeHandler}
-            searchfield={this.state.searchfield}
+            changed={searchChangeHandler}
+            searchfield={searchField}
             searchBook={this.searchBook}
-            booksData={this.state.booksData}
-            isLoading={this.state.isLoading}
-            isInitial={this.state.initialPage}
+            booksData={booksData}
+            isLoading={isLoading}
+            isInitial={initialPage}
             isInUserState={this.isInUserState}
             toggleBookHandler={this.toggleBookHandler}
-            userReadBooks={this.state.user.readBooks}
-            userWishlist={this.state.user.wishlist}
-            userFavourites={this.state.user.favourites}
+            userReadBooks={user.readBooks}
+            userWishlist={user.wishlist}
+            userFavourites={user.favourites}
             openModalHandler={this.openModalHandler}/>
         </main>
       </Auxiliary>
@@ -158,7 +177,7 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
 
 // fetch('https://www.googleapis.com/books/v1/volumes?q=flowers&filter=paid-ebooks')
 //   .then(function(response) {
