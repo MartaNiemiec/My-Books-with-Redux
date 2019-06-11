@@ -24,7 +24,7 @@ const bookModal = (props) => {
         <div className={classes.BookModal__content}>
           <h2>{book.volumeInfo.title}</h2>
           <h4>{fullAuthors}</h4>
-          <div>{book.volumeInfo.description}</div>
+          <div className={classes.BookModal__content__info}>{book.volumeInfo.description}</div>
         </div>
       </div>
     </Modal>

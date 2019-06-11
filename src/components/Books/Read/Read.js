@@ -16,7 +16,7 @@ const read = (props) => {
   props.userReadBooks.length === 0
   ? readBooks = noBooks
   : readBooks = bookList
-console.log(bookList);
+  
   return readBooks
 }
 

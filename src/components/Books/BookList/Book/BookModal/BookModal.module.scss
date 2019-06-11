@@ -53,6 +53,10 @@
     position: relative;
     float: right;
 
+    &__info {
+      padding: 1rem 0;
+    }
+
     @media only screen and (max-width: 550px) {
       padding: 0 1rem 10rem 1rem;
       width: calc(100% - 2rem);
