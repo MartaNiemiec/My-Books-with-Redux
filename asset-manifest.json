@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/My-Books-with-Redux/static/css/main.7652a58b.chunk.css",
-    "main.js": "/My-Books-with-Redux/static/js/main.db943ca2.chunk.js",
-    "main.js.map": "/My-Books-with-Redux/static/js/main.db943ca2.chunk.js.map",
+    "main.js": "/My-Books-with-Redux/static/js/main.ce967a5c.chunk.js",
+    "main.js.map": "/My-Books-with-Redux/static/js/main.ce967a5c.chunk.js.map",
     "runtime~main.js": "/My-Books-with-Redux/static/js/runtime~main.56743db9.js",
     "runtime~main.js.map": "/My-Books-with-Redux/static/js/runtime~main.56743db9.js.map",
-    "static/js/2.507630e7.chunk.js": "/My-Books-with-Redux/static/js/2.507630e7.chunk.js",
-    "static/js/2.507630e7.chunk.js.map": "/My-Books-with-Redux/static/js/2.507630e7.chunk.js.map",
+    "static/js/2.0b0b4b8a.chunk.js": "/My-Books-with-Redux/static/js/2.0b0b4b8a.chunk.js",
+    "static/js/2.0b0b4b8a.chunk.js.map": "/My-Books-with-Redux/static/js/2.0b0b4b8a.chunk.js.map",
     "index.html": "/My-Books-with-Redux/index.html",
-    "precache-manifest.e9aa1aab0f12e617d8f57942732a19bb.js": "/My-Books-with-Redux/precache-manifest.e9aa1aab0f12e617d8f57942732a19bb.js",
+    "precache-manifest.9e5beb235a95f63044ba4a01877601ec.js": "/My-Books-with-Redux/precache-manifest.9e5beb235a95f63044ba4a01877601ec.js",
     "service-worker.js": "/My-Books-with-Redux/service-worker.js",
     "static/css/main.7652a58b.chunk.css.map": "/My-Books-with-Redux/static/css/main.7652a58b.chunk.css.map"
   }
