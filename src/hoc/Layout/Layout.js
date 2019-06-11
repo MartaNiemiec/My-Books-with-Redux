@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSearchField } from '../../actions';
+import { setSearchField, requestBooks } from '../../actions';
 
 import Auxiliary from '../Auxiliary/Auxiliary';  
 import Toolbar from "../../components/Toolbar/Toolbar";
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Books from '../../components/Books/Books';
-import request from 'superagent';
+// import request from 'superagent';
 // import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import BookModal from '../../components/Books/BookList/Book/BookModal/BookModal';
 
@@ -14,9 +14,9 @@ import BookModal from '../../components/Books/BookList/Book/BookModal/BookModal'
 // =========== INITIAL STATE ===========
 const initialState = {
   // searchfield: '',
-  booksData: [],
-  isLoading: false,
-  initialPage: true,
+  // booksData: [],
+  // isLoading: false,
+  // initialPage: true,
   openBookModal:true,
   bookModalData: [],
   user: {
@@ -32,13 +32,18 @@ const initialState = {
 
 const mapStateToProps = state => {
   return {
-    searchField: state.searchField
+    searchField: state.searchBooks.searchField,
+    booksData: state.requestBooks.booksData,
+    isPending: state.requestBooks.isPending,
+    error: state.requestBooks.error,
+
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    searchChangeHandler: (event) => dispatch(setSearchField(event.target.value))
+    searchChangeHandler: (event) => dispatch(setSearchField(event.target.value)),
+    searchBooks: (ownProps) => dispatch(requestBooks(ownProps))
   }
 }
 
@@ -69,31 +74,36 @@ class Layout extends Component {
                     bookModalData: [] });
   }
 
+componentDidMount() {
+  // this.props.searchBooks()
+}
+
+
 
 // =========== Search Book ===========
   searchBook = (event) => {
     event.preventDefault();
-
-    if (this.state.searchfield === '') {
-      this.setState({
-        isLoading: false,
-        initialPage: true})
-    } else {
-      this.setState({
-        isLoading: true,
-        initialPage: false})
-      request
-        .get("https://www.googleapis.com/books/v1/volumes")
-        .query({ 
-          q: this.state.searchfield,
-          maxResults: 40 })
-        .then(data => {        
-          this.setState({
-            booksData: data.body.items,
-            isLoading: false})
-          console.log(this.state.booksData);
-        })
-    } 
+    this.props.searchBooks(this.props.searchField)
+    // if (this.state.searchfield === '') {
+    //   this.setState({
+    //     isLoading: false,
+    //     initialPage: true})
+    // } else {
+    //   this.setState({
+    //     isLoading: true,
+    //     initialPage: false})
+    //   request
+    //     .get("https://www.googleapis.com/books/v1/volumes")
+    //     .query({ 
+    //       q: this.state.searchfield,
+    //       maxResults: 40 })
+    //     .then(data => {        
+    //       this.setState({
+    //         booksData: data.body.items,
+    //         isLoading: false})
+    //       console.log(this.state.booksData);
+    //     })
+    // } 
   }
 
 // =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
@@ -140,9 +150,13 @@ class Layout extends Component {
     const main = {
       display:'flex'
     }
+    
+    let initialPage;
+    const { bookModalData, openBookModal, user  } = this.state;
+    const { searchChangeHandler, searchField, booksData, isPending } = this.props;
 
-    const { bookModalData, openBookModal, booksData, isLoading, initialPage, user  } = this.state;
-    const { searchChangeHandler, searchField } = this.props;
+
+    (booksData.length !== 0) ? initialPage = true : initialPage = false;
 
     let modall = bookModalData.length === 0  
     ? null 
@@ -163,7 +177,7 @@ class Layout extends Component {
             searchfield={searchField}
             searchBook={this.searchBook}
             booksData={booksData}
-            isLoading={isLoading}
+            isLoading={isPending}
             isInitial={initialPage}
             isInUserState={this.isInUserState}
             toggleBookHandler={this.toggleBookHandler}

@@ -50,7 +50,7 @@
       }
 
     // check if it's initial page wich no searched books
-      if (isInitial) {
+      if (!isInitial) {
         booksSection = <div className={classes.BookList__nomatches}>
                          <Fade><SearchIconBig /></Fade>
                          <Flip left>
