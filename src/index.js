@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { searchBooks, requestBooks } from './reducers';
+import requestBooksReducer from './store/reducers/requestBooks';
+import searchBooksReducer from './store/reducers/searchBooks';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;  // using Redux DevTools
 
 const logger = createLogger();
-const rootReducer = combineReducers({ searchBooks, requestBooks })
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
+const rootReducer = combineReducers({ 
+  searchBooks: searchBooksReducer, 
+  requestBooks: requestBooksReducer })
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware, logger)));
 
 ReactDOM.render(
                 <Provider store={store}>
