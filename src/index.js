@@ -9,13 +9,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import requestBooksReducer from './store/reducers/requestBooks';
 import searchBooksReducer from './store/reducers/searchBooks';
+import userBooksReducer from './store/reducers/userBooks';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;  // using Redux DevTools
 
 const logger = createLogger();
 const rootReducer = combineReducers({ 
   searchBooks: searchBooksReducer, 
-  requestBooks: requestBooksReducer })
+  requestBooks: requestBooksReducer,
+  userBooks: userBooksReducer })
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware, logger)));
 
 ReactDOM.render(

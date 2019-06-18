@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSearchField, requestBooks } from '../../store/actions/index';
+import { setSearchField, requestBooks, addBook, removeBook } from '../../store/actions/index';
 
 import Auxiliary from '../Auxiliary/Auxiliary';  
 import Toolbar from "../../components/Toolbar/Toolbar";
@@ -13,15 +13,15 @@ import BookModal from '../../components/Books/BookList/Book/BookModal/BookModal'
 const initialState = {
   openBookModal:true,
   bookModalData: [],
-  user: {
-    name:'',
-    email: '',
-    password: '',
-    joined: '',
-    readBooks: [],
-    wishlist: [],
-    favourites: []
-  }
+  // user: {
+  //   name:'',
+  //   email: '',
+  //   password: '',
+  //   joined: '',
+  //   readBooks: [],
+  //   wishlist: [],
+  //   favourites: []
+  // }
 }
 
 const mapStateToProps = state => {
@@ -30,14 +30,21 @@ const mapStateToProps = state => {
     booksData: state.requestBooks.booksData,
     isPending: state.requestBooks.isPending,
     error: state.requestBooks.error,
-
+    user: {
+      readBooks: state.userBooks.readBooks,
+      wishlist: state.userBooks.wishlist,
+      favourites: state.userBooks.favourites
+    }
+    
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     searchChangeHandler: (event) => dispatch(setSearchField(event.target.value)),
-    searchBooks: (ownProps) => dispatch(requestBooks(ownProps))
+    searchBooks: (ownProps) => dispatch(requestBooks(ownProps)),
+    addBookHandler: (bookId, bookList, booksData) => dispatch(addBook(bookId, bookList, booksData)),
+    removeBookHandler: (bookId, bookList, booksData) => dispatch(removeBook(bookId, bookList, booksData))
   }
 }
 
@@ -68,42 +75,17 @@ class Layout extends Component {
     this.props.searchBooks(this.props.searchField);
   }
 
-// =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
-  isInUserState = (bookId, bookList) => this.state.user[bookList].some(book => book.id === bookId);
+// // =========== Check if the book is in the user state.(readBooks/wishlist/favourites) ===========
+  isInUserState = (bookId, bookList) => this.props.user[bookList].some(book => book.id === bookId);
   
 
-// =========== Toggle Book's icons and user's state ===========
+// // =========== Toggle Book's icons and user's state ===========
   toggleBookHandler = (bookId, bookList) => { // bookLists-> readBooks/wishlist/favourites
-    // create a copy of the user state as user
-    const user = {...this.state.user};
-  // 1. check if the book is in the user's state
     let isInState = this.isInUserState(bookId, bookList);
-  // 2. if it isn't - add the book
-    if (isInState === false) {
-      this.setState(state => {
-        // book info
-          const book = state.booksData.filter(book => book.id === bookId)[0];
-        // adding a book to the userBookList array (eg. state.user.wishlist)
-          const userBookList = [book].concat(state.user[bookList]);
-        // setting the updated userBookList array to the user[bookList] 
-          user[bookList] = userBookList;
-          return {
-            user
-          }
-        })
-  // 3. if it is then remove the book
-    } else {
-      this.setState(state => {
-      // create an array without selected book
-        const userBookList = state.user[bookList].filter(book =>
-          book.id !== bookId)
-      // setting the updated userBookList array to the user[bookList] 
-        user[bookList] = userBookList;
-        return {
-          user
-        }
-      })
-    }
+    isInState ? this.props.removeBookHandler(bookId, bookList, this.props.booksData)
+              : this.props.addBookHandler(bookId, bookList, this.props.booksData)
+     
+     
   }
 
 
@@ -114,8 +96,8 @@ class Layout extends Component {
     }
     
     let initialPage;
-    const { bookModalData, openBookModal, user  } = this.state;
-    const { searchChangeHandler, searchField, booksData, isPending } = this.props;
+    const { bookModalData, openBookModal  } = this.state;
+    const { searchChangeHandler, searchField, booksData, isPending, user } = this.props;
 
 
     (booksData.length !== 0) ? initialPage = true : initialPage = false;
