@@ -97,21 +97,23 @@ class Layout extends Component {
     const { bookModalData, openBookModal  } = this.state;
     const { searchChangeHandler, searchField, booksData, isPending, user } = this.props;
 
-    (booksData.length === 0) ? initialPage = true : initialPage = false;
-
-    let modall = bookModalData.length === 0  
-    ? null 
-    : <BookModal show={openBookModal} 
-              modalClosed={this.closeModalHandler}
-              book={bookModalData[0]}
-              fullAuthors={bookModalData[1]}>
-              </BookModal>;
+    (booksData && booksData.length === 0) ? initialPage = true : initialPage = false;
+  
+    let modal = 
+    bookModalData.length === 0 ? null 
+                              : <BookModal show={openBookModal} 
+                                          modalClosed={this.closeModalHandler}
+                                          book={bookModalData[0]}
+                                          fullAuthors={bookModalData[1]}>
+                                </BookModal>;
+                  
+    
 
     return (
       <Auxiliary>
-        {modall}
+        {modal}
         <Toolbar />
-        <main style={ main }>
+        <main style={main}>
           <Sidebar/>
           <Books 
             changed={searchChangeHandler}
