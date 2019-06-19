@@ -25,7 +25,6 @@ const removeBook = ( state, action ) => {
   const userBookList = state[action.bookList].filter(book => book.id !== action.bookId)
   // setting the updated userBookList array to the user[bookList] 
   return updateObject(state, { [action.bookList]: userBookList })
-      
 }
 
 

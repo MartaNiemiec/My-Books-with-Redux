@@ -84,8 +84,6 @@ class Layout extends Component {
     let isInState = this.isInUserState(bookId, bookList);
     isInState ? this.props.removeBookHandler(bookId, bookList, this.props.booksData)
               : this.props.addBookHandler(bookId, bookList, this.props.booksData)
-     
-     
   }
 
 
@@ -99,8 +97,7 @@ class Layout extends Component {
     const { bookModalData, openBookModal  } = this.state;
     const { searchChangeHandler, searchField, booksData, isPending, user } = this.props;
 
-
-    (booksData.length !== 0) ? initialPage = true : initialPage = false;
+    (booksData.length === 0) ? initialPage = true : initialPage = false;
 
     let modall = bookModalData.length === 0  
     ? null 
